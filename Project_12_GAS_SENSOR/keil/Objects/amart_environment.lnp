@@ -1,0 +1,3 @@
+".\Objects\smart_environment.obj" 
+TO ".\Objects\amart_environment" 
+PRINT(".\Listings\amart_environment.m51")

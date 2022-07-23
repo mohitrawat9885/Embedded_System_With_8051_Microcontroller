@@ -1,0 +1,4 @@
+".\Objects\sendingNumbersToPort.obj",
+".\Objects\monitor_bit.obj" 
+TO ".\Objects\Practical_1" 
+PRINT(".\Listings\Practical_1.m51")

@@ -1,0 +1,65 @@
+C51 COMPILER V9.60.0.0   LCD_DISPLAY                                                       02/12/2022 08:27:28 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD_DISPLAY
+OBJECT MODULE PLACED IN .\Objects\LCD_Display.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE LCD_Display.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\LCD_Display.lst) TABS(2) OBJECT(.\Objects\LCD_Display.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define LCD P3
+   3          sbit RS = P2^0;
+   4          sbit E  = P2^1;
+   5          
+   6          void delay(unsigned char time){
+   7   1        unsigned i, j;
+   8   1        for(i=1;i<=time;i++)
+   9   1        for(j=1;j<=1257;j++);
+  10   1      }
+  11          void lcd_command(unsigned char c){
+  12   1        LCD = c;
+  13   1        RS = 0;
+  14   1        E = 1;
+  15   1        delay(10);
+  16   1        E = 0;
+  17   1      }
+  18          void lcd_data(unsigned char c){
+  19   1        LCD = c;
+  20   1        RS = 1;
+  21   1        E = 1;
+  22   1        delay(10);
+  23   1        E = 0;
+  24   1      }
+  25          void init_lcd(){
+  26   1        lcd_command(0x38);
+  27   1        lcd_command(0x0f);
+  28   1        lcd_command(0x01);
+  29   1        lcd_command(0x85);
+  30   1      }
+  31          
+  32          void main(){
+  33   1        unsigned char d[4] = "LPU";
+  34   1        unsigned int i = 0;
+  35   1        init_lcd();
+  36   1        while(d[i] != '\0'){
+  37   2          lcd_data(d[i]);
+  38   2          i++;
+  39   2          delay(10);
+  40   2        }
+  41   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    132    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

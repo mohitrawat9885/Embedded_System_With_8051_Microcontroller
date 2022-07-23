@@ -1,0 +1,80 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/05/2022  19:20:53  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\Getting_Byte.obj TO .\Objects\Getting_Byte PRINT (.\Listings\Getting_Byte.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Getting_Byte.obj (GETTING_BYTE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Getting_Byte (GETTING_BYTE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     001EH     UNIT         ?PR?MAIN?GETTING_BYTE
+            CODE    081EH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Getting_Byte (GETTING_BYTE)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?GETTING_BYTE
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Getting_Byte (GETTING_BYTE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        GETTING_BYTE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0800H         PUBLIC        main
+  -------         PROC          MAIN
+  C:0800H         LINE#         3
+  C:0800H         LINE#         4
+  C:0803H         LINE#         5
+  C:0806H         LINE#         6
+  C:0808H         LINE#         7
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/05/2022  19:20:53  PAGE 2
+
+
+  C:0808H         LINE#         8
+  C:0814H         LINE#         9
+  C:0817H         LINE#         10
+  C:0819H         LINE#         11
+  C:0819H         LINE#         12
+  C:081CH         LINE#         13
+  C:081CH         LINE#         14
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        GETTING_BYTE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 001EH BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=45
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

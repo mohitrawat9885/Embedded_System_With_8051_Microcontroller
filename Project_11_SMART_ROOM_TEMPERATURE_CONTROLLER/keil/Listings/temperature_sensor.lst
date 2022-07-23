@@ -1,0 +1,148 @@
+C51 COMPILER V9.60.0.0   TEMPERATURE_SENSOR                                                03/26/2022 10:00:55 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TEMPERATURE_SENSOR
+OBJECT MODULE PLACED IN .\Objects\temperature_sensor.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE temperature_sensor.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\temperature_sensor.lst) TABS(2) OBJECT(.\Objects\temperature_sensor.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define LCD P2
+   3          sbit RS = P3^0;
+   4          sbit E = P3^1;
+   5          sbit rd = P3^5;
+   6          sbit wr = P3^6;
+   7          sbit intr = P3^7;
+   8          
+   9          sbit ir = P0^0;
+  10          
+  11          sbit Ac = P3^2;
+  12          sbit Cooler = P3^3;
+  13          sbit Fan = P3^4;
+  14          
+  15          unsigned char ac_str[17] = "AC is ON        ";
+  16          unsigned char cooler_str[17] = "Cooler is ON    ";
+  17          unsigned char fan_str[17] = "Fan is ON       ";
+  18          unsigned char winter_str[17] = "Winters are near!";
+  19          unsigned char empty_str[17] = "Room is Empty!  ";
+  20          
+  21          void delay(unsigned int time){
+  22   1        unsigned int i, j;
+  23   1        for(i=1;i<time;i++)
+  24   1        for(j=1;j<1275;j++);
+  25   1      }
+  26          
+  27          void lcd_command(unsigned char c){
+  28   1        LCD = c;
+  29   1        RS = 0;
+  30   1        E = 1; 
+  31   1        delay(4);
+  32   1        E = 0;
+  33   1      }
+  34          void lcd_print(unsigned char d){
+  35   1          LCD = d;
+  36   1          RS = 1;
+  37   1          E = 1;
+  38   1          delay(4);
+  39   1          E = 0;
+  40   1      }
+  41          void init_lcd(){
+  42   1        lcd_command(0x38); //Use 16x2 8bit LCD
+  43   1        lcd_command(0x01);
+  44   1        lcd_command(0x06); //Clear LCD
+  45   1        lcd_command(0x0c);
+  46   1        lcd_command(0x81);
+  47   1      }
+  48          void displayString(unsigned char* str){
+  49   1        unsigned int i=0;
+  50   1        while(str[i] != '\0'){
+  51   2          lcd_print(str[i]);
+  52   2          i++;
+  53   2        }
+  54   1      }
+C51 COMPILER V9.60.0.0   TEMPERATURE_SENSOR                                                03/26/2022 10:00:55 PAGE 2   
+
+  55          void SetAcFanCooler(unsigned int v){
+  56   1        lcd_command(0x80);
+  57   1        
+  58   1        if(v >=50 && ir == 1){
+  59   2            Ac = 1;
+  60   2            Cooler = 0;
+  61   2            Fan = 0;
+  62   2          displayString(ac_str);
+  63   2      }
+  64   1        else if(v >= 40 && v < 50 && ir == 1){
+  65   2            Cooler = 1;
+  66   2            Ac = 0;
+  67   2            Fan = 0;
+  68   2          displayString(cooler_str);
+  69   2          }
+  70   1          else if(v <40 && v >= 30&& ir == 1){
+  71   2            Fan  = 1;
+  72   2            Ac = 0;
+  73   2            Cooler = 0;
+  74   2            displayString(fan_str);
+  75   2          }
+  76   1          else if(ir == 1){
+  77   2            Ac = 0;
+  78   2            Cooler = 0;
+  79   2            Fan = 0;
+  80   2          displayString(winter_str);
+  81   2          }
+  82   1          else{
+  83   2            Ac = 0;
+  84   2            Cooler = 0;
+  85   2            Fan = 0;
+  86   2            displayString(empty_str);
+  87   2          }
+  88   1      }
+  89          
+  90          void main(){
+  91   1        unsigned char tp[16] = "Temperature is: ";
+  92   1        unsigned int i=0;
+  93   1        unsigned char v, d3, d2, d1;
+  94   1        init_lcd();
+  95   1        //while(tp[i] != '\0'){
+  96   1          //lcd_print(tp[i++]);
+  97   1        //} 
+  98   1        //displayString(tp);
+  99   1        while(1){
+ 100   2          wr = 0;
+ 101   2          wr = 1;
+ 102   2          while(intr);
+ 103   2          rd = 0;
+ 104   2          v = P1;
+ 105   2          SetAcFanCooler(v);
+ 106   2          lcd_command(0xc6);
+ 107   2          d3 = v%10;
+ 108   2          v = v/10;
+ 109   2          d2 = v%10;
+ 110   2          v = v/10;
+ 111   2          d1 = v%10;
+ 112   2          lcd_print(d1+0x30);
+ 113   2          lcd_print(d2+0x30);
+ 114   2          lcd_print(d3+0x30);
+ 115   2          lcd_print(0xDF);
+ 116   2          lcd_print('C');
+C51 COMPILER V9.60.0.0   TEMPERATURE_SENSOR                                                03/26/2022 10:00:55 PAGE 3   
+
+ 117   2          rd =1;
+ 118   2        }
+ 119   1      }
+ 120              
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    398    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     85      28
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

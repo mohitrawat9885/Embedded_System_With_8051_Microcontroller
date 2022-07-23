@@ -1,0 +1,7 @@
+".\Objects\delay.obj",
+".\Objects\ds1307.obj",
+".\Objects\i2c.obj",
+".\Objects\lcd.obj",
+".\Objects\main.obj" 
+TO ".\Objects\i2c_interfacing" 
+PRINT(".\Listings\i2c_interfacing.m51")

@@ -1,0 +1,3 @@
+".\Objects\Getting_Byte.obj" 
+TO ".\Objects\Getting_Byte" 
+PRINT(".\Listings\Getting_Byte.m51")

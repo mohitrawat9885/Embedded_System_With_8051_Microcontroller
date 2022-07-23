@@ -1,0 +1,73 @@
+C51 COMPILER V9.60.0.0   IR_IN_LCD                                                         02/12/2022 10:45:20 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE IR_IN_LCD
+OBJECT MODULE PLACED IN .\Objects\IR_In_LCD.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE IR_In_LCD.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\IR_In_LCD.lst) TABS(2) OBJECT(.\Objects\IR_In_LCD.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define LCD P3
+   3          sbit RS = P2^0;
+   4          sbit E  = P2^1;
+   5          sbit IR = P2^2;
+   6          
+   7          void delay(unsigned char time){
+   8   1        unsigned i, j;
+   9   1        for(i=1;i<=time;i++)
+  10   1        for(j=1;j<=1257;j++);
+  11   1      }
+  12          void lcd_command(unsigned char c){
+  13   1        LCD = c;
+  14   1        RS = 0;
+  15   1        E = 1;
+  16   1        delay(10);
+  17   1        E = 0;
+  18   1      }
+  19          void lcd_data(unsigned char *d){
+  20   1        unsigned int i = 0;
+  21   1        while(d[i] != '\0'){
+  22   2          LCD = d[i];
+  23   2          RS = 1;
+  24   2          E = 1;
+  25   2          delay(10);
+  26   2          E = 0;
+  27   2          i++;
+  28   2        }
+  29   1      }
+  30          void init_lcd(){
+  31   1        lcd_command(0x38); //Use 16x2 8bit LCD
+  32   1        lcd_command(0x0f); //Display on cursor blink
+  33   1        lcd_command(0x01); //Clear LCD
+  34   1        //lcd_command(0x85);
+  35   1      }
+  36          
+  37          void main(){
+  38   1        unsigned char on[13] = "Object found";
+  39   1        unsigned char off[10] = "No Object";
+  40   1        init_lcd();
+  41   1        if(IR == 1){
+  42   2          lcd_data(on);
+  43   2        }
+  44   1        else{
+  45   2          lcd_data(off);
+  46   2        }
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    178    ----
+   CONSTANT SIZE    =     23    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   IR_IN_LCD                                                         02/12/2022 10:45:20 PAGE 2   
+
+   DATA SIZE        =   ----      28
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

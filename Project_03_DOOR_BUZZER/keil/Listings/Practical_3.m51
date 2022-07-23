@@ -1,0 +1,81 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/05/2022  19:55:50  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\bor_bell.obj TO .\Objects\Practical_3 PRINT (.\Listings\Practical_3.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\bor_bell.obj (BOR_BELL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Practical_3 (BOR_BELL)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0010H     UNIT         ?PR?MAIN?BOR_BELL
+            CODE    0810H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Practical_3 (BOR_BELL)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?BOR_BELL
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Practical_3 (BOR_BELL)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BOR_BELL
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0800H         PUBLIC        main
+  B:0090H.1       PUBLIC        a
+  B:0090H.2       PUBLIC        b
+  B:0090H.3       PUBLIC        c
+  B:0090H.4       PUBLIC        d
+  -------         PROC          MAIN
+  C:0800H         LINE#         8
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/05/2022  19:55:50  PAGE 2
+
+
+  C:0800H         LINE#         9
+  C:0803H         LINE#         10
+  C:0806H         LINE#         11
+  C:0808H         LINE#         12
+  C:080AH         LINE#         13
+  C:080CH         LINE#         14
+  C:080EH         LINE#         15
+  C:080EH         LINE#         16
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        BOR_BELL
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0010H BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=31
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,109 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/23/2022  13:41:31  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\sendingNumbersToPort.obj, .\Objects\monitor_bit.obj TO .\Objects\Practical_1 PRINT
+>>  (.\Listings\Practical_1.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\sendingNumbersToPort.obj (SENDINGNUMBERSTOPORT)
+  .\Objects\monitor_bit.obj (MONITOR_BIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Practical_1 (SENDINGNUMBERSTOPORT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0012H     UNIT         ?PR?MAIN?SENDINGNUMBERSTOPORT
+            CODE    0812H     000DH     UNIT         ?PR?MAIN?MONITOR_BIT
+            CODE    081FH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Practical_1 (SENDINGNUMBERSTOPORT)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?SENDINGNUMBERSTOPORT
+
+
+
+IGNORED SYMBOLS:
+   MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Practical_1 (SENDINGNUMBERSTOPORT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SENDINGNUMBERSTOPORT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:0800H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/23/2022  13:41:31  PAGE 2
+
+
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        z
+  -------         ENDDO         
+  C:0800H         LINE#         2
+  C:0800H         LINE#         4
+  C:080CH         LINE#         5
+  C:080EH         LINE#         6
+  C:0811H         LINE#         7
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SENDINGNUMBERSTOPORT
+
+  -------         MODULE        MONITOR_BIT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0812H         PUBLIC        main
+  B:0090H.5       PUBLIC        p1_5
+  -------         PROC          MAIN
+  C:0812H         LINE#         3
+  C:0812H         LINE#         4
+  C:0812H         LINE#         5
+  C:0815H         LINE#         6
+  C:0818H         LINE#         7
+  C:081AH         LINE#         8
+  C:081AH         LINE#         9
+  C:081DH         LINE#         10
+  C:081DH         LINE#         11
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MONITOR_BIT
+
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MAIN
+    MODULE:  .\Objects\monitor_bit.obj (MONITOR_BIT)
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MAIN?MONITOR_BIT
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 001FH BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=46
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  1 ERROR(S)

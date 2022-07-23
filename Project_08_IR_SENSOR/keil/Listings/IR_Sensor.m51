@@ -1,0 +1,92 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/12/2022  09:50:47  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\IR_Sensor.obj TO .\Objects\IR_Sensor PRINT (.\Listings\IR_Sensor.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\IR_Sensor.obj (IR_SENSOR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\IR_Sensor (IR_SENSOR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0027H     UNIT         ?PR?_DELAY?IR_SENSOR
+            CODE    0827H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0833H     0009H     UNIT         ?PR?MAIN?IR_SENSOR
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\IR_Sensor (IR_SENSOR)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?IR_SENSOR
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\IR_Sensor (IR_SENSOR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        IR_SENSOR
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0800H         PUBLIC        _delay
+  B:00A0H.0       PUBLIC        IR_IN
+  C:0833H         PUBLIC        main
+  B:00A0H.1       PUBLIC        IR_OUT
+  -------         PROC          _DELAY
+  D:0007H         SYMBOL        time
+  -------         DO            
+  D:0002H         SYMBOL        i
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/12/2022  09:50:47  PAGE 2
+
+
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0800H         LINE#         5
+  C:0800H         LINE#         7
+  C:0810H         LINE#         8
+  C:0826H         LINE#         9
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  C:0833H         LINE#         11
+  C:0833H         LINE#         12
+  C:0836H         LINE#         13
+  C:0838H         LINE#         14
+  C:0839H         LINE#         15
+  C:0839H         LINE#         16
+  C:083BH         LINE#         17
+  C:083BH         LINE#         18
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        IR_SENSOR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?IR_SENSOR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0030H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=63
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

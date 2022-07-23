@@ -1,0 +1,3 @@
+".\Objects\bor_bell.obj" 
+TO ".\Objects\Practical_3" 
+PRINT(".\Listings\Practical_3.m51")

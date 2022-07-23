@@ -1,0 +1,57 @@
+C51 COMPILER V9.60.0.0   DISPLAY_LPU_ECE                                                   02/06/2022 14:44:57 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DISPLAY_LPU_ECE
+OBJECT MODULE PLACED IN .\Objects\Display_LPU_ECE.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Display_LPU_ECE.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Li
+                    -stings\Display_LPU_ECE.lst) TABS(2) OBJECT(.\Objects\Display_LPU_ECE.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit key = P1^0;
+   3            
+   4          void delay(unsigned int time){
+   5   1        unsigned int i, j;
+   6   1        for(i=0;i<=time;i++)
+   7   1        for(j=0;j<=1275;j++);
+   8   1      }
+   9          
+  10          void main(){
+  11   1        unsigned char myReg[6] = {0x71,0x18,0x41,0x30,0x31,0x30};
+  12   1        unsigned int i;
+  13   1        key = 1;
+  14   1        P2 = 0x00;
+  15   1        while(1){
+  16   2          if(key == 1){
+  17   3            for(i=0;i<=2;i++){
+  18   4              P2 = myReg[i];
+  19   4              delay(100);
+  20   4              P2 = 0xFF;
+  21   4              delay(50);
+  22   4        }
+  23   3      }
+  24   2          else{
+  25   3            for(i=3;i<=5;i++){
+  26   4              P2 = myReg[i];
+  27   4              delay(100);
+  28   4              P2 = 0xFF;
+  29   4              delay(50);
+  30   4          }
+  31   3        }
+  32   2      }
+  33   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =      6    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

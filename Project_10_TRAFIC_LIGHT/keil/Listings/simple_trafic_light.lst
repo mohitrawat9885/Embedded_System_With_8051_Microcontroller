@@ -1,0 +1,74 @@
+C51 COMPILER V9.60.0.0   SIMPLE_TRAFIC_LIGHT                                               02/16/2022 12:04:45 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SIMPLE_TRAFIC_LIGHT
+OBJECT MODULE PLACED IN .\Objects\simple_trafic_light.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE simple_trafic_light.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -.\Listings\simple_trafic_light.lst) TABS(2) OBJECT(.\Objects\simple_trafic_light.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit R1 = P2^0;
+   3          sbit O1 = P2^1;
+   4          sbit G1 = P2^2;
+   5          
+   6          sbit R2 = P2^3;
+   7          sbit O2 = P2^4;
+   8          sbit G2 = P2^5;
+   9          
+  10          void delay(unsigned int time){
+  11   1        unsigned int i, j;
+  12   1        for(i=1;i<=time;i++)
+  13   1          for(j=1;j<=1275;j++);
+  14   1        
+  15   1      }
+  16          
+  17          void main(){
+  18   1        while(1){
+  19   2          R1 = 0;
+  20   2          O1 = 0;
+  21   2          G1 = 1;
+  22   2          R2 = 1;
+  23   2          O2 = 0;
+  24   2          G2 = 0;
+  25   2          delay(500);
+  26   2          R1 = 0;
+  27   2          O1 = 1;
+  28   2          G1 = 0;
+  29   2          R2 = 0;
+  30   2          O2 = 1;
+  31   2          G2 = 0;
+  32   2          delay(500);
+  33   2          R1 = 1;
+  34   2          O1 = 0;
+  35   2          G1 = 0;
+  36   2          R2 = 0;
+  37   2          O2 = 0;
+  38   2          G2 = 1;
+  39   2          delay(500);
+  40   2          R1 = 0;
+  41   2          O1 = 1;
+  42   2          G1 = 0;
+  43   2          R2 = 0;
+  44   2          O2 = 1;
+  45   2          G2 = 0;
+  46   2          delay(500);
+  47   2        }
+  48   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     85    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   SIMPLE_TRAFIC_LIGHT                                               02/16/2022 12:04:45 PAGE 2   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,169 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/12/2022  10:45:20  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\IR_In_LCD.obj TO .\Objects\IR_In_LCD PRINT (.\Listings\IR_In_LCD.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\IR_In_LCD.obj (IR_IN_LCD)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\IR_In_LCD (IR_IN_LCD)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001CH     UNIT         _DATA_GROUP_
+            IDATA   0024H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0123H     UNIT         ?C?LIB_CODE
+            CODE    0923H     003CH     UNIT         ?PR?MAIN?IR_IN_LCD
+            CODE    095FH     0034H     UNIT         ?PR?_LCD_DATA?IR_IN_LCD
+            CODE    0993H     0025H     UNIT         ?PR?_DELAY?IR_IN_LCD
+            CODE    09B8H     0017H     UNIT         ?CO?IR_IN_LCD
+            CODE    09CFH     000FH     UNIT         ?PR?INIT_LCD?IR_IN_LCD
+            CODE    09DEH     000EH     UNIT         ?PR?_LCD_COMMAND?IR_IN_LCD
+            CODE    09ECH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\IR_In_LCD (IR_IN_LCD)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?IR_IN_LCD
+
+?PR?MAIN?IR_IN_LCD                 0008H    0017H
+  +--> ?CO?IR_IN_LCD
+  +--> ?PR?INIT_LCD?IR_IN_LCD
+  +--> ?PR?_LCD_DATA?IR_IN_LCD
+
+?PR?INIT_LCD?IR_IN_LCD             -----    -----
+  +--> ?PR?_LCD_COMMAND?IR_IN_LCD
+
+?PR?_LCD_COMMAND?IR_IN_LCD         -----    -----
+  +--> ?PR?_DELAY?IR_IN_LCD
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/12/2022  10:45:20  PAGE 2
+
+
+
+?PR?_LCD_DATA?IR_IN_LCD            001FH    0005H
+  +--> ?PR?_DELAY?IR_IN_LCD
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\IR_In_LCD (IR_IN_LCD)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        IR_IN_LCD
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0993H         PUBLIC        _delay
+  B:00A0H.2       PUBLIC        IR
+  B:00A0H.0       PUBLIC        RS
+  C:0923H         PUBLIC        main
+  C:095FH         PUBLIC        _lcd_data
+  C:09B8H         SYMBOL        _?ix1000
+  C:09C5H         SYMBOL        _?ix1001
+  B:00A0H.1       PUBLIC        E
+  C:09CFH         PUBLIC        init_lcd
+  C:09DEH         PUBLIC        _lcd_command
+  -------         PROC          _DELAY
+  D:0007H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0993H         LINE#         7
+  C:0993H         LINE#         9
+  C:09A1H         LINE#         10
+  C:09B7H         LINE#         11
+  -------         ENDPROC       _DELAY
+  -------         PROC          _LCD_COMMAND
+  D:0007H         SYMBOL        c
+  C:09DEH         LINE#         12
+  C:09DEH         LINE#         13
+  C:09E0H         LINE#         14
+  C:09E2H         LINE#         15
+  C:09E4H         LINE#         16
+  C:09E9H         LINE#         17
+  C:09EBH         LINE#         18
+  -------         ENDPROC       _LCD_COMMAND
+  -------         PROC          _LCD_DATA
+  D:001FH         SYMBOL        d
+  -------         DO            
+  D:0022H         SYMBOL        i
+  -------         ENDDO         
+  C:095FH         LINE#         19
+  C:0965H         LINE#         20
+  C:096AH         LINE#         21
+  C:097BH         LINE#         22
+  C:097DH         LINE#         23
+  C:097FH         LINE#         24
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/12/2022  10:45:20  PAGE 3
+
+
+  C:0981H         LINE#         25
+  C:0986H         LINE#         26
+  C:0988H         LINE#         27
+  C:0990H         LINE#         28
+  C:0992H         LINE#         29
+  -------         ENDPROC       _LCD_DATA
+  -------         PROC          INIT_LCD
+  C:09CFH         LINE#         30
+  C:09CFH         LINE#         31
+  C:09D4H         LINE#         32
+  C:09D9H         LINE#         33
+  -------         ENDPROC       INIT_LCD
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        on
+  D:0015H         SYMBOL        off
+  -------         ENDDO         
+  C:0923H         LINE#         37
+  C:0923H         LINE#         38
+  C:0936H         LINE#         39
+  C:0949H         LINE#         40
+  C:094CH         LINE#         41
+  C:0951H         LINE#         42
+  C:0955H         LINE#         43
+  C:0957H         LINE#         44
+  C:0957H         LINE#         45
+  C:095EH         LINE#         46
+  C:095EH         LINE#         47
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        IR_IN_LCD
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?CLDOPTR
+  C:08F6H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00C9H BYTE ( 9%) *
+******************************************************************************
+
+Program Size: data=37.0 xdata=0 code=507
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

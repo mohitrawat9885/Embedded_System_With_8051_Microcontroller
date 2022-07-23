@@ -1,0 +1,133 @@
+C51 COMPILER V9.60.0.0   SMART_ENVIRONMENT                                                 04/02/2022 08:22:09 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SMART_ENVIRONMENT
+OBJECT MODULE PLACED IN .\Objects\smart_environment.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE smart_environment.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\smart_environment.lst) TABS(2) OBJECT(.\Objects\smart_environment.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define LCD P2
+   3          sbit RS = P3^0;
+   4          sbit E = P3^1;
+   5          
+   6          sbit smoke_led = P3^4;
+   7          sbit alcohol_led = P3^5;
+   8          sbit cng_led = P3^6;
+   9          sbit natural_gas_led = P3^7;
+  10          
+  11          sbit smoke_sen = P1^0;
+  12          sbit alcohol_sen = P1^1;
+  13          sbit cng_sen = P1^2;
+  14          sbit natural_gas_sen = P1^3;
+  15          
+  16          
+  17          unsigned char smoke[14] = "Smoke Detected";
+  18          unsigned char alcohol[16] = "Alcohol Detected";
+  19          unsigned char cng_gas[16] = "CNG Gas Detected";
+  20          unsigned char natural_gas[20] = "Natural Gas Detected";
+  21          
+  22          void delay(unsigned int time){
+  23   1        unsigned int i, j;
+  24   1        for(i=1;i<time;i++)
+  25   1        for(j=1;j<1275;j++);
+  26   1      }
+  27          
+  28          void lcd_command(unsigned char c){
+  29   1        LCD = c;
+  30   1        RS = 0;
+  31   1        E = 1; 
+  32   1        delay(4);
+  33   1        E = 0;
+  34   1      }
+  35          void lcd_print(unsigned char d){
+  36   1          LCD = d;
+  37   1          RS = 1;
+  38   1          E = 1;
+  39   1          delay(4);
+  40   1          E = 0;
+  41   1      }
+  42          void init_lcd(){
+  43   1        lcd_command(0x38); //Use 16x2 8bit LCD
+  44   1        lcd_command(0x01);
+  45   1        lcd_command(0x06); //Clear LCD
+  46   1        lcd_command(0x0c);
+  47   1        lcd_command(0x81);
+  48   1      }
+  49          void displayString(unsigned char* str){
+  50   1        unsigned int i=0;
+  51   1        while(str[i] != '\0'){
+  52   2          lcd_print(str[i]);
+  53   2          i++;
+  54   2        }
+C51 COMPILER V9.60.0.0   SMART_ENVIRONMENT                                                 04/02/2022 08:22:09 PAGE 2   
+
+  55   1      }
+  56          void main(){
+  57   1        init_lcd();
+  58   1        while(1){
+  59   2          if(smoke_sen == 1){
+  60   3            init_lcd();
+  61   3      
+  62   3            smoke_led = 1;
+  63   3            alcohol_led = 0;
+  64   3            cng_led = 0;
+  65   3            natural_gas_led = 0;
+  66   3                  displayString(smoke);
+  67   3            
+  68   3        } else if(alcohol_sen == 1){
+  69   3          init_lcd();
+  70   3          
+  71   3          smoke_led = 0;
+  72   3            alcohol_led = 1;
+  73   3            cng_led = 0;
+  74   3            natural_gas_led = 0;
+  75   3          displayString(alcohol);
+  76   3          
+  77   3      } else if(cng_sen == 1){
+  78   3        init_lcd();
+  79   3            
+  80   3            smoke_led = 0;
+  81   3            alcohol_led = 0;
+  82   3            cng_led = 1;
+  83   3            natural_gas_led = 0;
+  84   3        displayString(cng_gas);
+  85   3        
+  86   3      } else if(natural_gas_sen == 1){
+  87   3          init_lcd();
+  88   3            
+  89   3            smoke_led = 0;
+  90   3            alcohol_led = 0;
+  91   3            cng_led = 0;
+  92   3            natural_gas_led = 1;
+  93   3        displayString(natural_gas);
+  94   3        
+  95   3      }
+  96   2      else{
+  97   3          init_lcd();
+  98   3            smoke_led = 0;
+  99   3            alcohol_led = 0;
+ 100   3            cng_led = 0;
+ 101   3            natural_gas_led = 0;
+ 102   3      }
+ 103   2      }
+ 104   1      }
+ 105              
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    235    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     66       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.60.0.0   SMART_ENVIRONMENT                                                 04/02/2022 08:22:09 PAGE 3   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

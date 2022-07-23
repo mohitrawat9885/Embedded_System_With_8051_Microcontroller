@@ -1,0 +1,3 @@
+".\Objects\temperature_sensor.obj" 
+TO ".\Objects\temperature_sensor" 
+PRINT(".\Listings\temperature_sensor.m51")
